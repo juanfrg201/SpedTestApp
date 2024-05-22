@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: SpeedTest
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails s"
+    plan: free
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+  - type: redis
+    name: redis
+    ipAllowList: []
+    plan: free
+    maxmemoryPolicy: noeviction
