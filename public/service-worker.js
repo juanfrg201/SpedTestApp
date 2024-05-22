@@ -1,4 +1,4 @@
-const CACHE_NAME = 'SpeedTest-Cache-v1';
+const CACHE_NAME = 'SpeedTest-Cache-v2';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -31,15 +31,4 @@ self.addEventListener('activate', (event) => {
       console.error('Error durante la activación del Service Worker:', error);
     })
   );
-});
-
-self.addEventListener("push", (event) => {
-  let title = (event.data && event.data.text()) || "Yay a message";
-  let body = "We have received a push message";
-  let tag = "push-simple-demo-notification-tag";
-  let icon = '/assets/my-logo-120x120.png';
-
-  event.waitUntil(
-    self.registration.showNotification(title, { body, icon, tag })
-  )
 });
