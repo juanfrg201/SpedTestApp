@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Cache1';
+const CACHE_NAME = 'SpeedTest-Cache-v1';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

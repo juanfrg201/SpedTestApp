@@ -1,7 +1,7 @@
 {
   "name": "SpeedTestApp",
-  "short_name": "SpeedTestApp",
-  "start_url": "./",
+  "short_name": "SpeedTest",
+  "start_url": "./speed_test",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
