@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      
+    <div class="container mt-4">
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="card">
+            <div class="card-content">
+              <h2 class="title is-4 has-text-centered">Medición de Conexión de IPs</h2>
+              <% if @speed_test_data.present? && @speed_test_data["data"].present? %>
+                <div class="table-container">
+                  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>Dirección IP</th>
+                        <th>Velocidades (Mbps)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @speed_test_data["data"].each do |ip_data| %>
+                        <tr>
+                          <td><%= ip_data["ip"] %></td>
+                          <td>
+                            <ul>
+                              <% ip_data["data"].each do |speed_data| %>
+                                <% speed_data["mbs"].each do |speed| %>
+                                  <li><%= speed %></li>
+                                <% end %>
+                              <% end %>
+                            </ul>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              <% else %>
+                <p>No se encontraron datos de velocidad de conexión.</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

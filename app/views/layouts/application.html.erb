@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html style="background: white;">
+  <head>
+    <title>SpeedTestRailsAppFinal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(function(registration) {
+          navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
+            console.log('Se registro el service_worker');
+          });
+        })
+        .catch(function(error) {
+          console.error('Error al registrar el Service Worker:', error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Agrega el script para activar el botón de hamburguesa
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach((el) => {
+          el.addEventListener('click', () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+          });
+        });
+      }
+    });
+  </script>
+
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="background: #18184a;">
+        <div class="navbar-brand">
+          <%= link_to root_path, class: 'navbar-item' do %>
+            SpeedTest
+          <% end %>
+
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-start">
+            <!-- Agrega tus enlaces de navegación aquí -->
+            <%= link_to 'Mi conexion', root_path, class: 'navbar-item' %>
+            <%= link_to 'Comparar IPS Conexion', compare_ips_speed_test_index_path, class: 'navbar-item' %>
+        
+          </div>
+        </div>
+      </nav>
+
+
+    <%= yield %>
+  </body>
+</html>
